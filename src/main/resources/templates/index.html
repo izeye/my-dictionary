@@ -1,21 +1,40 @@
-<html>
+<!doctype html>
+<html lang="en">
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
     <title>My Dictionary</title>
 </head>
 <body>
-<h1>Words</h1>
-<ol>
-    <li th:each="word : ${words}">
-        <h2 th:text="${word.value}"></h2>
-        <ol>
-            <li th:each="meaning : ${word.meanings}">
-                <div>
-                    <div th:text="${meaning.wordClass}"></div>
-                    <div th:text="${meaning.value}"></div>
+<div class="container">
+    <h1>Words</h1>
+
+    <div class="accordion" id="accordionWords">
+        <div class="card" th:each="word, iter : ${words}">
+            <div class="card-header" th:id="${'heading' + iter.index}">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left" th:classappend="${iter.index == iter.size - 1 ? '' : 'collapsed'}" type="button" data-toggle="collapse" th:data-target="${'#collapse' + iter.index}" th:aria-expanded="${iter.index == iter.size - 1}" th:aria-controls="${'collapse' + iter.index}" th:text="${word.value}">
+                    </button>
+                </h2>
+            </div>
+
+            <div th:id="${'collapse' + iter.index}" class="collapse" th:classappend="${iter.index == iter.size - 1 ? 'show' : ''}" th:aria-labelledby="${'heading' + iter.index}" data-parent="#accordionWords">
+                <div class="card-body">
+                    <div th:each="meaning : ${word.meanings}">
+                        <div th:text="${meaning.wordClass}"></div>
+                        <div th:text="${meaning.value}"></div>
+                    </div>
                 </div>
-            </li>
-        </ol>
-    </li>
-</ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 </body>
 </html>
