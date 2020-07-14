@@ -16,12 +16,12 @@
         <div class="card" th:each="word, iter : ${words}">
             <div class="card-header" th:id="${'heading' + iter.index}">
                 <h2 class="mb-0">
-                    <button class="btn btn-link btn-block text-left" th:classappend="${iter.index == iter.size - 1 ? '' : 'collapsed'}" type="button" data-toggle="collapse" th:data-target="${'#collapse' + iter.index}" th:aria-expanded="${iter.index == iter.size - 1}" th:aria-controls="${'collapse' + iter.index}" th:text="${word.value}">
+                    <button class="btn btn-link btn-block text-left" th:classappend="${iter.index == 0 ? '' : 'collapsed'}" type="button" data-toggle="collapse" th:data-target="${'#collapse' + iter.index}" th:aria-expanded="${iter.index == 0}" th:aria-controls="${'collapse' + iter.index}" th:text="${word.value}">
                     </button>
                 </h2>
             </div>
 
-            <div th:id="${'collapse' + iter.index}" class="collapse" th:classappend="${iter.index == iter.size - 1 ? 'show' : ''}" th:aria-labelledby="${'heading' + iter.index}" data-parent="#accordionWords">
+            <div th:id="${'collapse' + iter.index}" class="collapse" th:classappend="${iter.index == 0 ? 'show' : ''}" th:aria-labelledby="${'heading' + iter.index}" data-parent="#accordionWords">
                 <div class="card-body">
                     <div th:each="meaning : ${word.meanings}">
                         <div th:text="${meaning.wordClass}"></div>

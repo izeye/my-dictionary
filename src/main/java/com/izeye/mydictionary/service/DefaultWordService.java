@@ -3,6 +3,7 @@ package com.izeye.mydictionary.service;
 import com.izeye.mydictionary.domain.Word;
 import com.izeye.mydictionary.repository.MeaningRepository;
 import com.izeye.mydictionary.repository.WordRepository;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,7 +27,7 @@ public class DefaultWordService implements WordService {
 
     @Override
     public List<Word> getAll() {
-        return this.wordRepository.findAll();
+        return this.wordRepository.findAll(Sort.by(Sort.Direction.DESC, "value"));
     }
 
     @Override
