@@ -1,3 +1,4 @@
 .gradle
 .idea
 build
+db/my-dictionary.trace.db
