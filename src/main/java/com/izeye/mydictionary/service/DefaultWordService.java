@@ -27,7 +27,7 @@ public class DefaultWordService implements WordService {
 
     @Override
     public List<Word> getAll() {
-        return this.wordRepository.findAll(Sort.by(Sort.Direction.DESC, "value"));
+        return this.wordRepository.findAll(Sort.by(Sort.Direction.DESC, "id"));
     }
 
     @Override
