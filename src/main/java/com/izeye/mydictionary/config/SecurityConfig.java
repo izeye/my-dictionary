@@ -30,8 +30,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().requestMatchers(EndpointRequest.toAnyEndpoint()).authenticated()
-				.regexMatchers("/admin").authenticated().and().httpBasic();
+		http.csrf().disable();
+
+		http.authorizeRequests().requestMatchers(EndpointRequest.toAnyEndpoint()).authenticated().mvcMatchers("/admin")
+				.authenticated().anyRequest().permitAll().and().httpBasic();
 	}
 
 }
