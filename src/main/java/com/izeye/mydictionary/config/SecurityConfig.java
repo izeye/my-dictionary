@@ -16,6 +16,7 @@
 package com.izeye.mydictionary.config;
 
 import org.springframework.boot.actuate.autoconfigure.security.servlet.EndpointRequest;
+import org.springframework.boot.actuate.health.HealthEndpoint;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -32,8 +33,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable();
 
-		http.authorizeRequests().requestMatchers(EndpointRequest.toAnyEndpoint()).authenticated().mvcMatchers("/admin")
-				.authenticated().anyRequest().permitAll().and().httpBasic();
+		http.authorizeRequests() //
+				.requestMatchers(EndpointRequest.to(HealthEndpoint.class)).permitAll() //
+				.requestMatchers(EndpointRequest.toAnyEndpoint()).authenticated() //
+				.mvcMatchers("/admin").authenticated() //
+				.anyRequest().permitAll() //
+				.and().httpBasic();
 	}
 
 }
