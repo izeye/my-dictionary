@@ -11,6 +11,7 @@
 <body>
 <div class="container">
     <h1>Words</h1>
+    <h2 th:text="${'# of words: ' + words.size()}"></h2>
 
     <div class="accordion" id="accordionWords">
         <div class="card" th:each="word, iter : ${words}">
