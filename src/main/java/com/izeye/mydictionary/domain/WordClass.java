@@ -25,6 +25,11 @@ public enum WordClass {
 	/**
 	 * For nouns.
 	 */
-	NOUN
+	NOUN,
+
+	/**
+	 * For verbs.
+	 */
+	VERB
 
 }
