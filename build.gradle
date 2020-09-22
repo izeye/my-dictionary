@@ -19,7 +19,7 @@ apply plugin: 'io.spring.javaformat'
 
 group = 'com.izeye'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '14'
+sourceCompatibility = '15'
 
 repositories {
 	mavenCentral()
