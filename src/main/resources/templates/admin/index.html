@@ -13,8 +13,9 @@
     <form action="/admin" method="post">
         <input name="word" type="text">
         <select name="wordClass">
-            <option value="NOUN">noun</option>
-            <option value="VERB">verb</option>
+            <option th:each="wordClass : ${T(com.izeye.mydictionary.domain.WordClass).values()}"
+                    th:value="${wordClass.name()}"
+                    th:text="${wordClass.name().toLowerCase()}"></option>
         </select>
         <input name="meaning" type="text">
         <input type="submit">
