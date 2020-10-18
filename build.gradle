@@ -36,7 +36,7 @@ dependencies {
 	implementation("io.micrometer:micrometer-registry-prometheus")
 
 	// For experiments
-	implementation("io.micrometer:micrometer-registry-statsd")
+//	implementation("io.micrometer:micrometer-registry-statsd")
 
 	compileOnly("org.projectlombok:lombok")
 	annotationProcessor("org.projectlombok:lombok")
