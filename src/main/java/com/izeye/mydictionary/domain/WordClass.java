@@ -35,6 +35,11 @@ public enum WordClass {
 	/**
 	 * For adjectives.
 	 */
-	ADJECTIVE
+	ADJECTIVE,
+
+	/**
+	 * For adverbs.
+	 */
+	ADVERB
 
 }
